@@ -7,8 +7,9 @@ const socket = io("http://localhost:3001/");
 function Provider({ children }) {
   const [user, setUser] = useState(null);
   const [messages, setMessages] = useState([]);
+  
 
-  const value = useMemo(
+  const value = useMemo( 
     () => ({
       user,
       setUser,

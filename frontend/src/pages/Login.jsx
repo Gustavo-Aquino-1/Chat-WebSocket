@@ -7,8 +7,18 @@ function Login() {
   const [name, setName] = useState()
   const history = useHistory()
 
+  function getRandomLightColor() {
+    // Ensuring RGB values are more towards the lighter side (range 128-255)
+    const r = Math.floor(Math.random() * 128) + 128; // Random value between 128 and 255
+    const g = Math.floor(Math.random() * 128) + 128; // Random value between 128 and 255
+    const b = Math.floor(Math.random() * 128) + 128; // Random value between 128 and 255
+  
+    // Returning the color in the format "rgb(r, g, b)"
+    return `rgb(${r}, ${g}, ${b})`;
+  }
+
   const entry = () => { 
-    setUser({ id: Math.random(), name })
+    setUser({ id: Math.random(), name, color: getRandomLightColor() })
     history.push('/chat')
   }
 
