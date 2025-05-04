@@ -19,7 +19,7 @@ function Chat() {
 
     socket.off('new_message')
     socket.on("new_message", (data) => {
-      console.log(data);
+      // console.log(data);
       setMessages((prevState) => [...prevState, data])
     });
 
@@ -31,6 +31,7 @@ function Chat() {
   useEffect(() => {
     const handleScroll = () => {
       console.log('Scroll Y da página:', window.scrollY);
+      console.log('X da página:', window.innerWidth)
     };
   
     window.addEventListener('scroll', handleScroll);
@@ -42,8 +43,8 @@ function Chat() {
     // console.log(window.scrollY, refDiv.current.getBoundingClientRect().top)
     // console.log('bottom', window.scrollY + refDiv.current.getBoundingClientRect().top)
     const sb = (window.scrollY + refDiv.current.getBoundingClientRect().top) - window.scrollY
-    console.log(sb)
-    if(sb < 1000) {
+    console.log('sb', sb)
+    if(sb < 800) {
       refDiv.current?.scrollIntoView({ behavior: 'smooth'}) // scrollIntoView scrollar ate o elemento ficar visivel, como esse elemento esta baixo da lista de mensagens, logo quando a lista de mensgaens começar a encher ele vai continuar indo para baixo para manter essa div que esta abaixo da lista visível.
       setHasNewMessage(false)
     }
